@@ -25,9 +25,12 @@ res.render("rolldice.ejs", {num});
 });
 
 app.get("/ig/:username",(req,res)=>{
-let{username} =req.params;
-res.render("instagram.ejs",{username});
+
+    const followers = ["lochan","awasthi"];
+    let{username} =req.params;
+    res.render("instagram.ejs",{username,followers});
 }
+
 );
 
 app.listen(port, ()=>{
