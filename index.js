@@ -4,6 +4,7 @@ const app = express();
 
 const port = 8080;
 
+app.use(express.static("public"));
 const path = require("path");
 app.set("views", path.join(__dirname, "/views"));
 
@@ -26,12 +27,21 @@ res.render("rolldice.ejs", {num});
 
 app.get("/ig/:username",(req,res)=>{
 
-    const followers = ["lochan","awasthi"];
-    let{username} =req.params;
-    res.render("instagram.ejs",{username,followers});
-}
+    // const followers = ["lochan","awasthi"];
+    let{ username } =req.params;
+    const instData = require("./data.json");
+    const data = instData[username];
 
-);
+     if(data){
+        res.render("instagram.ejs",{data});
+     }
+     else{
+        res.render("error.ejs");
+     }
+    
+    
+//     res.render("instagram.ejs",{username,followers});
+});
 
 app.listen(port, ()=>{
     console.log(`listenging boss ${port}`);

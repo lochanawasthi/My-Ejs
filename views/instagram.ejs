@@ -4,17 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram</title>
+    <link rel="Stylesheet" href="/style.css">
+<style>
+   img{
+    height : 100px;
+    width:100px;
+   }
+    </style>
 </head>
 <body>
-    <h2>THis page belong to  <%= username %> </h2>
+    <h2>THis page belong to  <%=data.name%> </h2>
     <button>Follow</button>
-    <buton> Hey</buton>
-    <h2>Accounts thaat follow up:  </h2>
+    <button> Hey</button>
+    
+    <p>Followers : <%=data.followers%> &nbsp;&nbsp;&nbsp;&nbsp;
+    Following : <%=data.following%></p>
 
-<ul>
-    <% for(let name of followers) { %>
-        <li> <%= name%> </li>
-  <% } %>
+<hr>
+
+<% for (let post of data.posts){%>
+
+
+<img src="<%=post.image  %>" alt ="some img">
+
+<p>
+    Likes : <%=post.likes%> &nbsp;&nbsp;&nbsp;&nbsp; 
+    Comments :  <%=post.comments%>
+    
+</p>
+<% }%>
 
 </body>
+<script src="/stylw.js"></script>
 </html>
+ <!-- <ul>
+    < for(let name of followers) { %>
+        <li> <= name%> </li> //%use removed by me
+  < } %>
+<ul>  -->
